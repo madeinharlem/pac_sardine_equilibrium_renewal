@@ -37,7 +37,7 @@ sound_data <- function(dataset, threshold, samplingrate) {
 }
 #Analysis
 keboard_milk <- readWave("2052341246920171222143858 (1).wav")
-print(keyboard_mil)
+print(keyboard_milk)
 play(keyboard_milk)
 ####for other music analysis (some other day)
 #plot(snap@left[30700:31500], type = "l", main = "Snap",
