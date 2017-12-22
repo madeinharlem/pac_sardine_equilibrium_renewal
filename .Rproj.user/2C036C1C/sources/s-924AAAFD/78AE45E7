@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1513952086399.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3668512511",
+    "id" : "78AE45E7",
+    "lastKnownWriteTime" : 1513952102,
+    "last_content_update" : 1513952102476,
+    "path" : "~/GitHub/pac_sardine_equilibrium_renewal/optimal_age_compute_matrix.R",
+    "project_path" : "optimal_age_compute_matrix.R",
+    "properties" : {
+        "cursorPosition" : "10,22",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
