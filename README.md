@@ -1,1 +1,1 @@
-# pac_sardine_equilibrium_renewal
+# Pacific sardine equilibrium renewal model
