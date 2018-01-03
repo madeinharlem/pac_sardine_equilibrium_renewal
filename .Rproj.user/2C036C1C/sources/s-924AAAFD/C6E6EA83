@@ -2,18 +2,18 @@
     "collab_server" : "",
     "contents" : "",
     "created" : 1513952049615.000,
-    "dirty" : true,
+    "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
     "id" : "C6E6EA83",
-    "lastKnownWriteTime" : 1513954355,
-    "last_content_update" : 1513954841699,
+    "lastKnownWriteTime" : 1514123338,
+    "last_content_update" : 1514123338894,
     "path" : "~/GitHub/pac_sardine_equilibrium_renewal/sardine_equilibrium.R",
     "project_path" : "sardine_equilibrium.R",
     "properties" : {
-        "cursorPosition" : "39,19",
-        "scrollLine" : "26"
+        "cursorPosition" : "100,14",
+        "scrollLine" : "84"
     },
     "relative_order" : 2,
     "source_on_save" : false,

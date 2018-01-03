@@ -6,7 +6,8 @@
 #####(B) Age 0 are recruits and are not fished. An initial value of 1 is assumed for age 0 recruits.
 #####(C) All parameter values below are cited with reference in the write-up
 
-##########################################################Fixed parameters
+##########################################################Play some music before coding!
+##########################################################Unrelated to code below
 #install.packages("tuneR", repos = "http://cran.r-project.org")
 library(tuneR)
 #Functions
@@ -35,15 +36,10 @@ sound_data <- function(dataset, threshold, samplingrate) {
   return(data)
 }
 #Analysis
-snap <- readWave("2052341246920171222143858 (1).wav")
-print(snap)
-play(snap)
-plot(snap@left[30700:31500], type = "l", main = "Snap",
-     xlab = "Time", ylab = "Frequency")
-data <- sound_data(snap@left, 4000, 44100)
-plot(data[,3], data[,2], type = "l", main = "Snap",
-     xlab = "Dist", ylab = "Frequency")
-
+keyboard_milk <- readWave("2052341246920171222143858 (1).wav")
+print(keyboard_milk)
+play(keyboard_milk)
+#######################################################################################
 S_a<-1 #Selectivity at age - Knife edged
 Linf<-23.4 # Asymptotic length
 vbK<- 0.4238 #von Bertalolanfy k parameter
@@ -73,7 +69,7 @@ for(p1 in 1:length(seq(0.001,2,0.001)))
 {
 p<-seq(0.001,2,0.001)
 #price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,p[p1],0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
-price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,p[p1],0.09580068,0.16614681,0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
+price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,p[p1],0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
 ##########################################################
 #Function 1: Optimal age compute matrix computes the catch values for variable fishing mortalities (0.025-1) and various selectivities
 ##IMPORTANT: Selectivity is asssumed to be knife edged i.e. a policy measure that implies if S_a=a; fish <=age a are let go 
