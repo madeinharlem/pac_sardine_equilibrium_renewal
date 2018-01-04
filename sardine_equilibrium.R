@@ -6,7 +6,8 @@
 #####(B) Age 0 are recruits and are not fished. An initial value of 1 is assumed for age 0 recruits.
 #####(C) All parameter values below are cited with reference in the write-up
 
-#######################################################################################
+##########################################################Fixed parameters
+
 S_a<-1 #Selectivity at age - Knife edged
 Linf<-23.4 # Asymptotic length
 vbK<- 0.4238 #von Bertalolanfy k parameter
@@ -21,23 +22,25 @@ h<- 0.95
 #U<-0.5 #Fishing mortality
 M_a<-c(0.71,0.46,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4)
 Age<-seq(1,11)
-optimal_age_harvest_profit<-rep(NA,length(seq(0.001,2,0.001)))
-optimal_age_harvest_val<-rep(NA,length(seq(0.001,2,0.001)))
-optimal_age_harvest_levels<-rep(NA,length(seq(0.001,2,0.001)))
-price_a<-matrix(NA,nrow=length(seq(0.001,2,0.001)), ncol=length(seq(1,11)))
+optimal_age_harvest_profit<-rep(NA,length(seq(0.001,3,0.001)))
+optimal_age_harvest_val<-rep(NA,length(seq(0.001,3,0.001)))
+optimal_age_harvest_levels<-rep(NA,length(seq(0.001,3,0.001)))
+price_a<-matrix(NA,nrow=length(seq(0.001,3,0.001)), ncol=length(seq(1,11)))
 len<-length(seq(0.025,1,0.025))
 len1<-length(seq(1,10))
 catch_val<-matrix(NA,nrow = len1,ncol=len)
 maxval_catch_age<-rep(NA,nrow(catch_val))
 harvesting_level_maxval_catch_age<-rep(NA,nrow(catch_val))
+price_a1<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,0.16614681,0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
 
-
-for(p1 in 1:length(seq(0.001,2,0.001)))
+for(p1 in 1:length(seq(0.001,3,0.001)))
 {
-p<-seq(0.001,2,0.001)
+p<-seq(0.001,3,0.001)
 #price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,p[p1],0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
-price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,p[p1],0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
-##########################################################
+#price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.127,0.169,0.235,0.333,0.480,0.713,0.349)
+price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.127,0.169,0.235,0.333,0.480,0.713,p[p1])
+##########################################################0.16614681
+
 #Function 1: Optimal age compute matrix computes the catch values for variable fishing mortalities (0.025-1) and various selectivities
 ##IMPORTANT: Selectivity is asssumed to be knife edged i.e. a policy measure that implies if S_a=a; fish <=age a are let go 
 
@@ -72,3 +75,10 @@ optimal_age_harvest_profit[p1]<-maxval_catch_age
 optimal_age_harvest_levels[p1]<-optimal_harvest_catch[maxval_catch_age_val,2]
 }
 final_choice<-cbind(optimal_age_harvest_val,optimal_age_harvest_levels,optimal_age_harvest_profit)
+for(i in seq(1,length(final_choice[,1])-1))
+{
+  if (as.numeric(final_choice[(i+1),1]-final_choice[i,1])!=0)
+  price_a1[10]=0.001*(i+1)
+}
+        
+
