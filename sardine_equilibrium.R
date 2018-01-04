@@ -6,39 +6,6 @@
 #####(B) Age 0 are recruits and are not fished. An initial value of 1 is assumed for age 0 recruits.
 #####(C) All parameter values below are cited with reference in the write-up
 
-##########################################################Play some music before coding!
-##########################################################Unrelated to code below
-#install.packages("tuneR", repos = "http://cran.r-project.org")
-library(tuneR)
-#Functions
-sound_dist <- function(duration, samplingrate) {
-  #Speed of sound is 1125 ft/sec
-  return((duration/samplingrate)*1125/2)
-}
-sound_data <- function(dataset, threshold, samplingrate) {
-  dataset <- snap@left
-  threshold = 4000
-  samplingrate = 44100
-  data <- data.frame()
-  max = 0
-  maxindex = 0
-  for (i in 1:length(dataset)) {
-    if (dataset[i] > max) {
-      max = dataset[i]
-      maxindex = i
-      data <- data.frame()
-    }
-    if (abs(dataset[i]) > threshold) {
-      data <- rbind(data, c(i,dataset[i], sound_dist(i - maxindex, samplingrate)))
-    }
-  }
-  colnames(data) <- c("x", "y", "dist")
-  return(data)
-}
-#Analysis
-keyboard_milk <- readWave("2052341246920171222143858 (1).wav")
-print(keyboard_milk)
-play(keyboard_milk)
 #######################################################################################
 S_a<-1 #Selectivity at age - Knife edged
 Linf<-23.4 # Asymptotic length
