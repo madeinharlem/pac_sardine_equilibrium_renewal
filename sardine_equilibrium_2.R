@@ -8,7 +8,7 @@
 
 ##########################################################Fixed parameters
 
-S_a<-1 #Selectivity at age - Knife edged
+S_a<-2 #Selectivity at age - Knife edged
 Linf<-23.4 # Asymptotic length
 vbK<- 0.4238 #von Bertalolanfy k parameter
 aw<- 7.52E-06 #Allometric param 1
@@ -28,7 +28,7 @@ optimal_age_harvest_levels<-rep(NA,length(seq(0.001,1,0.001)))
 price_a<-matrix(NA,nrow=length(seq(0.001,1,0.001)), ncol=length(seq(1,11)))
 len<-length(seq(0.025,1,0.025))
 len1<-length(seq(1,10))
-t_seq<-seq(1,100)
+t_seq<-seq(1,21)
 price_a2<-matrix(NA,nrow=length(t_seq),ncol=length(seq(1,11)))
 rev_a2<-matrix(NA,nrow=length(t_seq),ncol=length(seq(1,11)))
 harv_a2<-matrix(NA,nrow=length(t_seq),ncol=length(seq(1,11)))
@@ -36,14 +36,13 @@ age_a2<-matrix(NA,nrow=length(t_seq),ncol=length(seq(1,11)))
 catch_val<-matrix(NA,nrow = len1,ncol=len)
 maxval_catch_age<-rep(NA,nrow(catch_val))
 harvesting_level_maxval_catch_age<-rep(NA,nrow(catch_val))
-price_a1<-c(0,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001)
-for(t in seq(1,100))
+price_a1<-c(0,0,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001)
+for(t in seq(1,20))
 {
-for(a in seq(11,2,-1))
+for(a in seq(11,1,-1))
 {
 for(p1 in 1:length(seq(0.001,1,0.001)))
 {
-price_a2[t,1]<-0
 p<-seq(0.001,1,0.001)
 #price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.09580068,p[p1],0.17170977,0.17727273,0.20227273,0.22727273,0.22727273)
 #price_a[p1,]<-c(0.02545455,0.02545455,0.02545455,0.02545455,0.127,0.169,0.235,0.333,0.480,0.713,0.349)
@@ -51,6 +50,8 @@ p<-seq(0.001,1,0.001)
 #price_a[p1,]<-c(0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001)
 price_a[p1,]<-price_a1
 price_a[p1,a]<-p[p1]
+price_a[p1,1]<-0
+price_a[p1,2]<-0
 #price_a[p1,a-1]<-p[p1]
 
 ##########################################################0.16614681
@@ -99,8 +100,10 @@ final_choice<-cbind(optimal_age_harvest_val,optimal_age_harvest_levels,optimal_a
       age_a2[t,a]=final_choice[i+1,1]
     }
   }
+  price_a2[t,1]<-0
+  price_a2[t,2]<-0
   price_a1[a]<-price_a2[t,a]
-  }
+ }
 }
 
 #Round 1
@@ -125,3 +128,6 @@ final_choice<-cbind(optimal_age_harvest_val,optimal_age_harvest_levels,optimal_a
 #c(0,0.027,0.025,0.027,0.033,0.044,0.06,0.085,0.123,0.182,0.089)
 #Round 12
 #c(0,0.031,0.029,0.032,0.04,0.053,0.073,0.103,0.149,0.221,0.108)
+write.csv(rev_a2,'rev_sel_2.csv')
+write.csv(price_a2,'price_sel_2.csv')
+write.csv(harv_a2,'harv_sel_2.csv')
