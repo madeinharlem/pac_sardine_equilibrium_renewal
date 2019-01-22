@@ -13,4 +13,8 @@ We start with one recruit
 
 ![equation](https://latex.codecogs.com/gif.latex?N_{a&plus;1}=(1-v_ah)s_aN_a)  
 
+The code is commented for the interested reader.
+
+Kapish!
+
 
